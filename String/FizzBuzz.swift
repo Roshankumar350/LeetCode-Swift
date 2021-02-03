@@ -8,24 +8,34 @@
 
 class FizzBuzz {
     func fizzBuzz(_ n: Int) -> [String] {
-        var res = [String]()
+      var output = [String]()
     
-        if n < 0 {
-            return res
+    // Expected
+    
+    /* Given:
+     cases:
+     1. Multiple of 3 -> "Fizz"
+     2. Multiple of 5 -> "Buzz"
+     3. Multiple of 15 -> "FizzBuzz"
+     4  default -> number
+     */
+    
+    for eachNumber in 1...n {
+        switch true {
+        case eachNumber.isMultiple(of:15):
+            output.append("FizzBuzz")
+            
+        case eachNumber.isMultiple(of:5):
+            output.append("Buzz")
+            
+        case eachNumber.isMultiple(of: 3):
+            output.append("Fizz")
+            
+        default:
+            output.append("\(eachNumber)")
         }
-        
-        for i in 1...n {
-            if i % 3 == 0 && i % 5 == 0 {
-                res.append("FizzBuzz")
-            } else if i % 3 == 0 {
-                res.append("Fizz")
-            } else if i % 5 == 0 {
-                res.append("Buzz")
-            } else {
-                res.append("\(i)")
-            }
-        }
-        
-        return res
+    }
+    
+    return output
     }
 }
